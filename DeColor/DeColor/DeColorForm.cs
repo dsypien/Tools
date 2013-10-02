@@ -53,7 +53,33 @@ namespace DeColor
 
                     foreach (var file in files)
                     {
-                        System.Console.WriteLine(file.ToString());
+                        var filename = file.ToString();
+                        
+                        if(!filename.EndsWith(".png"))
+                        {
+                            continue;
+                        }
+
+                        using (Bitmap img = Image.FromFile(file.ToString()) as Bitmap)
+                        {
+
+                            for (int x = 0; x < img.Width; x++)
+                            {
+                                for (int y = 0; y < img.Height; y++)
+                                {
+                                    Color pixelColor = img.GetPixel(x, y);
+
+                                    img.SetPixel(x, y, Color.FromArgb(
+                                        pixelColor.A,
+                                        255,
+                                        255,
+                                        255
+                                    ));
+                                }
+                            }
+
+                            img.Save(filename.Substring(0, filename.Length - 4) + "_white.png");
+                        }
                     }
                 }
             }
