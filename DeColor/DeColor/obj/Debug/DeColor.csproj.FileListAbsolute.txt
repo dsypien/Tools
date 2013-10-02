@@ -10,3 +10,12 @@ D:\Visual Studio 2013\Projects\DeColor\DeColor\obj\Debug\DeColor.pdb
 D:\Visual Studio 2013\Tools\DeColor\DeColor\bin\Debug\DeColor.exe.config
 D:\Visual Studio 2013\Tools\DeColor\DeColor\obj\Debug\DeColor.exe
 D:\Visual Studio 2013\Tools\DeColor\DeColor\obj\Debug\DeColor.pdb
+C:\Users\david\Documents\GitHub\Tools\DeColor\DeColor\bin\Debug\DeColor.exe.config
+C:\Users\david\Documents\GitHub\Tools\DeColor\DeColor\obj\Debug\DeColor.exe
+C:\Users\david\Documents\GitHub\Tools\DeColor\DeColor\obj\Debug\DeColor.pdb
+C:\Users\david\Documents\GitHub\Tools\DeColor\DeColor\bin\Debug\DeColor.exe
+C:\Users\david\Documents\GitHub\Tools\DeColor\DeColor\bin\Debug\DeColor.pdb
+C:\Users\david\Documents\GitHub\Tools\DeColor\DeColor\obj\Debug\DeColor.csprojResolveAssemblyReference.cache
+C:\Users\david\Documents\GitHub\Tools\DeColor\DeColor\obj\Debug\DeColor.DeColorForm.resources
+C:\Users\david\Documents\GitHub\Tools\DeColor\DeColor\obj\Debug\DeColor.Properties.Resources.resources
+C:\Users\david\Documents\GitHub\Tools\DeColor\DeColor\obj\Debug\DeColor.csproj.GenerateResource.Cache

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 using System.Collections.ObjectModel;
+using System.IO;
 
 namespace DeColor
 {
@@ -42,8 +43,19 @@ namespace DeColor
             using (FolderBrowserDialog dialog = new FolderBrowserDialog())
             {
                 dialog.ShowDialog();
+                var path = dialog.SelectedPath;
 
-                _directoryTextBox.Text = dialog.SelectedPath;
+                _directoryTextBox.Text = path;
+
+                foreach (var directory in Directory.GetDirectories(path))
+                {
+                    var files = Directory.GetFiles(directory);
+
+                    foreach (var file in files)
+                    {
+                        System.Console.WriteLine(file.ToString());
+                    }
+                }
             }
         }
     }
