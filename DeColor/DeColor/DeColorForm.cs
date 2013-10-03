@@ -26,6 +26,14 @@ namespace DeColor
             }
         }
 
+        private string DirectoryPath
+        {
+            get
+            {
+                return _directoryTextBox.Text;
+            }
+        }
+
         public DeColorForm()
         {
             InitializeComponent();
@@ -53,24 +61,6 @@ namespace DeColor
                 var path = dialog.SelectedPath;
 
                 _directoryTextBox.Text = path;
-
-                // Iterate through all subdirectories
-                foreach (var directory in Directory.GetDirectories(path))
-                {
-                    var files = Directory.GetFiles(directory);
-
-                    foreach (var file in files)
-                    {
-                        var filename = file.ToString();
-                        
-                        if(!filename.EndsWith(".png") || filename.EndsWith(_extendedFileName))
-                        {
-                            continue;
-                        }
-                        
-                        DecolorizeImage(filename);
-                    }
-                }
             }
         }
 
@@ -106,5 +96,34 @@ namespace DeColor
         {
             _colorPanel.BackColor = SelectedColor;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(DirectoryPath))
+            {
+                MessageBox.Show("Please browse to a directory");
+                return;
+            }
+
+            // Iterate through all subdirectories
+            foreach (var directory in Directory.GetDirectories(DirectoryPath))
+            {
+                var files = Directory.GetFiles(directory);
+
+                foreach (var file in files)
+                {
+                    var filename = file.ToString();
+
+                    if (!filename.EndsWith(".png") || filename.EndsWith(_extendedFileName))
+                    {
+                        continue;
+                    }
+
+                    DecolorizeImage(filename);
+                }
+            }
+
+        }
+
     }
 }
