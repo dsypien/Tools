@@ -99,16 +99,20 @@ namespace DeColor
 
         private void BeginDecolorize()
         {
-            _groupBox.Enabled = false;
-            _colorComboBox.Enabled = false;
-            _directoryTextBox.Enabled = false;
+            SetControlVisible(_loaderImage);
+
+            SetControlEnabled(_colorComboBox, false);
+            SetControlEnabled(_directoryTextBox, false);
+            SetControlEnabled(_groupBox, false);
         }
 
         private void EndDecolorize()
         {
-            _groupBox.Enabled = true;
-            _colorComboBox.Enabled = true;
-            _directoryTextBox.Enabled = true;
+            SetControlVisible(_loaderImage, false);
+
+            SetControlEnabled(_colorComboBox);
+            SetControlEnabled(_directoryTextBox);
+            SetControlEnabled(_groupBox);
 
             MessageBox.Show("Files Decolorized!");
         }
@@ -121,6 +125,11 @@ namespace DeColor
                 return;
             }
 
+            Task.Factory.StartNew(() => DeColorize());
+        }
+
+        private void DeColorize()
+        {
             BeginDecolorize();
 
             // Iterate through all subdirectories
@@ -144,9 +153,34 @@ namespace DeColor
             EndDecolorize();
         }
 
-        private void progressBar1_Click(object sender, EventArgs e)
+        private void SetControlVisible(Control ctrl, bool isVisible = true)
         {
+            if (this.InvokeRequired)
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    ctrl.Visible = isVisible;
+                });
+            }
+            else
+            {
+                ctrl.Visible = isVisible;
+            }
+        }
 
+        private void SetControlEnabled(Control ctrl, bool isEnabled = true)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    ctrl.Enabled = isEnabled;
+                });
+            }
+            else
+            {
+                ctrl.Enabled = isEnabled;
+            }
         }
 
     }

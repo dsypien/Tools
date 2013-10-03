@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeColorForm));
             this._directoryLabel = new System.Windows.Forms.Label();
             this._directoryTextBox = new System.Windows.Forms.TextBox();
             this._browseButton = new System.Windows.Forms.Button();
@@ -37,7 +38,9 @@
             this._colorPanel = new System.Windows.Forms.Panel();
             this._groupBox = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this._loaderImage = new System.Windows.Forms.PictureBox();
             this._groupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._loaderImage)).BeginInit();
             this.SuspendLayout();
             // 
             // _directoryLabel
@@ -121,11 +124,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // _loaderImage
+            // 
+            this._loaderImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._loaderImage.ErrorImage = ((System.Drawing.Image)(resources.GetObject("_loaderImage.ErrorImage")));
+            this._loaderImage.Image = global::DeColor.Properties.Resources.ajax_loader;
+            this._loaderImage.InitialImage = ((System.Drawing.Image)(resources.GetObject("_loaderImage.InitialImage")));
+            this._loaderImage.Location = new System.Drawing.Point(181, 161);
+            this._loaderImage.Name = "_loaderImage";
+            this._loaderImage.Size = new System.Drawing.Size(216, 20);
+            this._loaderImage.TabIndex = 10;
+            this._loaderImage.TabStop = false;
+            this._loaderImage.Visible = false;
+            // 
             // DeColorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 193);
+            this.Controls.Add(this._loaderImage);
             this.Controls.Add(this.button1);
             this.Controls.Add(this._groupBox);
             this.MaximumSize = new System.Drawing.Size(634, 232);
@@ -134,6 +151,7 @@
             this.Text = "DeColor";
             this._groupBox.ResumeLayout(false);
             this._groupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._loaderImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -149,6 +167,7 @@
         private System.Windows.Forms.Panel _colorPanel;
         private System.Windows.Forms.GroupBox _groupBox;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox _loaderImage;
     }
 }
 
