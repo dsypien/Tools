@@ -32,8 +32,6 @@
             this._directoryTextBox = new System.Windows.Forms.TextBox();
             this._browseButton = new System.Windows.Forms.Button();
             this._turnLabel = new System.Windows.Forms.Label();
-            this._turnComboBox = new System.Windows.Forms.ComboBox();
-            this._intoLabel = new System.Windows.Forms.Label();
             this._intoComboBox = new System.Windows.Forms.ComboBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
@@ -42,7 +40,7 @@
             // 
             this._directoryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this._directoryLabel.AutoSize = true;
-            this._directoryLabel.Location = new System.Drawing.Point(13, 117);
+            this._directoryLabel.Location = new System.Drawing.Point(13, 84);
             this._directoryLabel.Name = "_directoryLabel";
             this._directoryLabel.Size = new System.Drawing.Size(49, 13);
             this._directoryLabel.TabIndex = 0;
@@ -51,7 +49,7 @@
             // _directoryTextBox
             // 
             this._directoryTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._directoryTextBox.Location = new System.Drawing.Point(16, 143);
+            this._directoryTextBox.Location = new System.Drawing.Point(16, 110);
             this._directoryTextBox.Name = "_directoryTextBox";
             this._directoryTextBox.Size = new System.Drawing.Size(459, 20);
             this._directoryTextBox.TabIndex = 1;
@@ -59,7 +57,7 @@
             // _browseButton
             // 
             this._browseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._browseButton.Location = new System.Drawing.Point(481, 143);
+            this._browseButton.Location = new System.Drawing.Point(492, 110);
             this._browseButton.Name = "_browseButton";
             this._browseButton.Size = new System.Drawing.Size(59, 20);
             this._browseButton.TabIndex = 2;
@@ -70,33 +68,16 @@
             // _turnLabel
             // 
             this._turnLabel.AutoSize = true;
-            this._turnLabel.Location = new System.Drawing.Point(13, 22);
+            this._turnLabel.Location = new System.Drawing.Point(13, 18);
             this._turnLabel.Name = "_turnLabel";
-            this._turnLabel.Size = new System.Drawing.Size(108, 13);
+            this._turnLabel.Size = new System.Drawing.Size(278, 13);
             this._turnLabel.TabIndex = 3;
-            this._turnLabel.Text = "Turn all colors except";
-            // 
-            // _turnComboBox
-            // 
-            this._turnComboBox.FormattingEnabled = true;
-            this._turnComboBox.Location = new System.Drawing.Point(151, 19);
-            this._turnComboBox.Name = "_turnComboBox";
-            this._turnComboBox.Size = new System.Drawing.Size(186, 21);
-            this._turnComboBox.TabIndex = 4;
-            // 
-            // _intoLabel
-            // 
-            this._intoLabel.AutoSize = true;
-            this._intoLabel.Location = new System.Drawing.Point(93, 58);
-            this._intoLabel.Name = "_intoLabel";
-            this._intoLabel.Size = new System.Drawing.Size(24, 13);
-            this._intoLabel.TabIndex = 5;
-            this._intoLabel.Text = "into";
+            this._turnLabel.Text = "Take all pixels that are not transperent and turn them into:";
             // 
             // _intoComboBox
             // 
             this._intoComboBox.FormattingEnabled = true;
-            this._intoComboBox.Location = new System.Drawing.Point(151, 58);
+            this._intoComboBox.Location = new System.Drawing.Point(16, 47);
             this._intoComboBox.Name = "_intoComboBox";
             this._intoComboBox.Size = new System.Drawing.Size(186, 21);
             this._intoComboBox.TabIndex = 6;
@@ -105,10 +86,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 178);
+            this.ClientSize = new System.Drawing.Size(559, 145);
             this.Controls.Add(this._intoComboBox);
-            this.Controls.Add(this._intoLabel);
-            this.Controls.Add(this._turnComboBox);
             this.Controls.Add(this._turnLabel);
             this.Controls.Add(this._browseButton);
             this.Controls.Add(this._directoryTextBox);
@@ -126,8 +105,6 @@
         private System.Windows.Forms.TextBox _directoryTextBox;
         private System.Windows.Forms.Button _browseButton;
         private System.Windows.Forms.Label _turnLabel;
-        private System.Windows.Forms.ComboBox _turnComboBox;
-        private System.Windows.Forms.Label _intoLabel;
         private System.Windows.Forms.ComboBox _intoComboBox;
         private System.Windows.Forms.ColorDialog colorDialog1;
     }

@@ -15,8 +15,8 @@ namespace DeColor
 {
     public partial class DeColorForm : Form
     {
-        private ObservableCollection<KnownColor> _fromColors = new ObservableCollection<KnownColor>();
-        private ObservableCollection<KnownColor> _intoColors = new ObservableCollection<KnownColor>();
+        private ObservableCollection<KnownColor> _colors = new ObservableCollection<KnownColor>();
+        private string _extendedFileName = "_deColorD.png";
 
         public DeColorForm()
         {
@@ -32,14 +32,12 @@ namespace DeColor
             foreach (KnownColor color in colorArray)
             {
                 _fromColors.Add(color);
-                _intoColors.Add(color);
+                _colors.Add(color);
             }
 
-            _turnComboBox.DataSource = _fromColors;
-            _intoComboBox.DataSource = _intoColors;
+            _intoComboBox.DataSource = _colors;
 
             // set default values
-            _turnComboBox.SelectedItem = KnownColor.Transparent;
             _intoComboBox.SelectedItem = KnownColor.White;
         }
 
@@ -65,8 +63,11 @@ namespace DeColor
                         {
                             continue;
                         }
-
-                        DecolorizeImage(filename);
+                        if (filename.EndsWith(_extendedFileName))
+                        {
+                            File.Delete(filename);
+                        }
+                       DecolorizeImage(filename);
                     }
                 }
             }
@@ -74,6 +75,8 @@ namespace DeColor
 
         private void DecolorizeImage(string filename)
         {
+            Color color = Color.FromKnownColor((KnownColor)_intoComboBox.SelectedValue);
+
             using (Bitmap img = Image.FromFile(filename) as Bitmap)
             {
                 for (int x = 0; x < img.Width; x++)
@@ -84,14 +87,19 @@ namespace DeColor
 
                         img.SetPixel(x, y, Color.FromArgb(
                             pixelColor.A,
-                            255,
-                            255,
-                            255
+                            color
                         ));
                     }
                 }
 
-                img.Save(filename.Substring(0, filename.Length - 4) + "_white.png");
+                string fileName = filename.Substring(0, filename.Length - 4) + _extendedFileName;
+
+                if (File.Exists(fileName))
+                {
+                    File.Delete(fileName);
+                }
+
+                img.Save(fileName);
             }
         }
     }
