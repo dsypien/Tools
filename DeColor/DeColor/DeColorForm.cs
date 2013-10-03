@@ -18,6 +18,14 @@ namespace DeColor
         private ObservableCollection<KnownColor> _colors = new ObservableCollection<KnownColor>();
         private string _extendedFileName = "_deColorD.png";
 
+        private Color SelectedColor
+        {
+            get
+            {
+                return Color.FromKnownColor((KnownColor)_colorComboBox.SelectedValue);
+            }
+        }
+
         public DeColorForm()
         {
             InitializeComponent();
@@ -68,8 +76,6 @@ namespace DeColor
 
         private void DecolorizeImage(string filename)
         {
-            Color color = Color.FromKnownColor((KnownColor)_colorComboBox.SelectedValue);
-
             using (Bitmap img = Image.FromFile(filename) as Bitmap)
             {
                 for (int x = 0; x < img.Width; x++)
@@ -80,7 +86,7 @@ namespace DeColor
 
                         img.SetPixel(x, y, Color.FromArgb(
                             pixelColor.A,
-                            color
+                            SelectedColor
                         ));
                     }
                 }
@@ -94,6 +100,11 @@ namespace DeColor
 
                 img.Save(fileName);
             }
+        }
+
+        private void _colorComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _colorPanel.BackColor = SelectedColor;
         }
     }
 }

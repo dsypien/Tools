@@ -82,6 +82,7 @@
             this._colorComboBox.Name = "_colorComboBox";
             this._colorComboBox.Size = new System.Drawing.Size(179, 21);
             this._colorComboBox.TabIndex = 6;
+            this._colorComboBox.SelectedIndexChanged += new System.EventHandler(this._colorComboBox_SelectedIndexChanged);
             // 
             // _colorPanel
             // 
