@@ -20,8 +20,13 @@ namespace DeColor
 
         public DeColorForm()
         {
-            
             InitializeComponent();
+            InitComboBoxes();
+        }
+
+        // Populate ComboBoxes with known colors
+        private void InitComboBoxes()
+        {
             Array colorArray = Enum.GetValues(typeof(KnownColor));
 
             foreach (KnownColor color in colorArray)
@@ -33,7 +38,7 @@ namespace DeColor
             _turnComboBox.DataSource = _fromColors;
             _intoComboBox.DataSource = _intoColors;
 
-            //default values
+            // set default values
             _turnComboBox.SelectedItem = KnownColor.Transparent;
             _intoComboBox.SelectedItem = KnownColor.White;
         }
@@ -47,6 +52,7 @@ namespace DeColor
 
                 _directoryTextBox.Text = path;
 
+                // Iterate through all subdirectories
                 foreach (var directory in Directory.GetDirectories(path))
                 {
                     var files = Directory.GetFiles(directory);
@@ -60,28 +66,32 @@ namespace DeColor
                             continue;
                         }
 
-                        using (Bitmap img = Image.FromFile(file.ToString()) as Bitmap)
-                        {
-
-                            for (int x = 0; x < img.Width; x++)
-                            {
-                                for (int y = 0; y < img.Height; y++)
-                                {
-                                    Color pixelColor = img.GetPixel(x, y);
-
-                                    img.SetPixel(x, y, Color.FromArgb(
-                                        pixelColor.A,
-                                        255,
-                                        255,
-                                        255
-                                    ));
-                                }
-                            }
-
-                            img.Save(filename.Substring(0, filename.Length - 4) + "_white.png");
-                        }
+                        DecolorizeImage(filename);
                     }
                 }
+            }
+        }
+
+        private void DecolorizeImage(string filename)
+        {
+            using (Bitmap img = Image.FromFile(filename) as Bitmap)
+            {
+                for (int x = 0; x < img.Width; x++)
+                {
+                    for (int y = 0; y < img.Height; y++)
+                    {
+                        Color pixelColor = img.GetPixel(x, y);
+
+                        img.SetPixel(x, y, Color.FromArgb(
+                            pixelColor.A,
+                            255,
+                            255,
+                            255
+                        ));
+                    }
+                }
+
+                img.Save(filename.Substring(0, filename.Length - 4) + "_white.png");
             }
         }
     }
