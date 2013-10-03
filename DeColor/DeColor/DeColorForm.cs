@@ -97,6 +97,22 @@ namespace DeColor
             _colorPanel.BackColor = SelectedColor;
         }
 
+        private void BeginDecolorize()
+        {
+            _groupBox.Enabled = false;
+            _colorComboBox.Enabled = false;
+            _directoryTextBox.Enabled = false;
+        }
+
+        private void EndDecolorize()
+        {
+            _groupBox.Enabled = true;
+            _colorComboBox.Enabled = true;
+            _directoryTextBox.Enabled = true;
+
+            MessageBox.Show("Files Decolorized!");
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(DirectoryPath))
@@ -104,6 +120,8 @@ namespace DeColor
                 MessageBox.Show("Please browse to a directory");
                 return;
             }
+
+            BeginDecolorize();
 
             // Iterate through all subdirectories
             foreach (var directory in Directory.GetDirectories(DirectoryPath))
@@ -122,6 +140,12 @@ namespace DeColor
                     DecolorizeImage(filename);
                 }
             }
+
+            EndDecolorize();
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
 
         }
 

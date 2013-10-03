@@ -35,9 +35,9 @@
             this._colorComboBox = new System.Windows.Forms.ComboBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this._colorPanel = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this._groupBox = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this._groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // _directoryLabel
@@ -96,19 +96,19 @@
             this._colorPanel.Size = new System.Drawing.Size(53, 20);
             this._colorPanel.TabIndex = 7;
             // 
-            // groupBox1
+            // _groupBox
             // 
-            this.groupBox1.Controls.Add(this._browseButton);
-            this.groupBox1.Controls.Add(this._colorPanel);
-            this.groupBox1.Controls.Add(this._directoryLabel);
-            this.groupBox1.Controls.Add(this._colorComboBox);
-            this.groupBox1.Controls.Add(this._directoryTextBox);
-            this.groupBox1.Controls.Add(this._turnLabel);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(592, 134);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
+            this._groupBox.Controls.Add(this._browseButton);
+            this._groupBox.Controls.Add(this._colorPanel);
+            this._groupBox.Controls.Add(this._directoryLabel);
+            this._groupBox.Controls.Add(this._colorComboBox);
+            this._groupBox.Controls.Add(this._directoryTextBox);
+            this._groupBox.Controls.Add(this._turnLabel);
+            this._groupBox.Location = new System.Drawing.Point(12, 12);
+            this._groupBox.Name = "_groupBox";
+            this._groupBox.Size = new System.Drawing.Size(592, 134);
+            this._groupBox.TabIndex = 8;
+            this._groupBox.TabStop = false;
             // 
             // button1
             // 
@@ -127,13 +127,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 193);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this._groupBox);
             this.MaximumSize = new System.Drawing.Size(634, 232);
             this.MinimumSize = new System.Drawing.Size(634, 232);
             this.Name = "DeColorForm";
             this.Text = "DeColor";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this._groupBox.ResumeLayout(false);
+            this._groupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -147,7 +147,7 @@
         private System.Windows.Forms.ComboBox _colorComboBox;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Panel _colorPanel;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox _groupBox;
         private System.Windows.Forms.Button button1;
     }
 }
