@@ -24,21 +24,17 @@ namespace DeColor
             InitComboBoxes();
         }
 
-        // Populate ComboBoxes with known colors
         private void InitComboBoxes()
         {
             Array colorArray = Enum.GetValues(typeof(KnownColor));
 
             foreach (KnownColor color in colorArray)
             {
-                _fromColors.Add(color);
                 _colors.Add(color);
             }
 
-            _intoComboBox.DataSource = _colors;
-
-            // set default values
-            _intoComboBox.SelectedItem = KnownColor.White;
+            _colorComboBox.DataSource = _colors;
+            _colorComboBox.SelectedItem = KnownColor.White;
         }
 
         private void _browseButton_Click(object sender, EventArgs e)
@@ -59,15 +55,12 @@ namespace DeColor
                     {
                         var filename = file.ToString();
                         
-                        if(!filename.EndsWith(".png"))
+                        if(!filename.EndsWith(".png") || filename.EndsWith(_extendedFileName))
                         {
                             continue;
                         }
-                        if (filename.EndsWith(_extendedFileName))
-                        {
-                            File.Delete(filename);
-                        }
-                       DecolorizeImage(filename);
+                        
+                        DecolorizeImage(filename);
                     }
                 }
             }
@@ -75,7 +68,7 @@ namespace DeColor
 
         private void DecolorizeImage(string filename)
         {
-            Color color = Color.FromKnownColor((KnownColor)_intoComboBox.SelectedValue);
+            Color color = Color.FromKnownColor((KnownColor)_colorComboBox.SelectedValue);
 
             using (Bitmap img = Image.FromFile(filename) as Bitmap)
             {
