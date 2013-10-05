@@ -17,12 +17,15 @@ namespace DeColor
     {
         private ObservableCollection<KnownColor> _colors = new ObservableCollection<KnownColor>();
         private string _extendedFileName = "_deColorD.png";
+        private Color _selectedColor = Color.White;
+
+        #region Properties
 
         private Color SelectedColor
         {
             get
             {
-                return Color.FromKnownColor((KnownColor)_colorComboBox.SelectedValue);
+                return _selectedColor;
             }
         }
 
@@ -33,6 +36,7 @@ namespace DeColor
                 return _directoryTextBox.Text;
             }
         }
+        #endregion
 
         public DeColorForm()
         {
@@ -94,7 +98,8 @@ namespace DeColor
 
         private void _colorComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _colorPanel.BackColor = SelectedColor;
+            UpdateSelectedColor();
+            UpdatePanelColor( SelectedColor );
         }
 
         private void BeginDecolorize()
@@ -153,6 +158,8 @@ namespace DeColor
             EndDecolorize();
         }
 
+        #region Cross-Threaded Calls
+
         private void SetControlVisible(Control ctrl, bool isVisible = true)
         {
             if (this.InvokeRequired)
@@ -183,5 +190,40 @@ namespace DeColor
             }
         }
 
+        private void UpdateSelectedColor()
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke((MethodInvoker) delegate
+                {
+                    _selectedColor = Color.FromKnownColor(
+                        (KnownColor)_colorComboBox.SelectedItem
+                    );
+                });
+            }
+            else
+            {
+                _selectedColor = Color.FromKnownColor(
+                    (KnownColor)_colorComboBox.SelectedItem
+                );
+            }
+        }
+
+        private void UpdatePanelColor(Color color)
+        {
+            if(this.InvokeRequired)
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    _colorPanel.BackColor = color;
+                });
+            }
+            else
+            {
+                _colorPanel.BackColor = color;
+            }
+        }
+
+        #endregion
     }
 }
