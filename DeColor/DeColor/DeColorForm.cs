@@ -71,6 +71,11 @@ namespace DeColor
 
         private void DecolorizeImage(string filename)
         {
+            if (!filename.EndsWith(".png") || filename.EndsWith(_extendedFileName))
+            {
+                return;
+            }
+
             using (Bitmap img = Image.FromFile(filename) as Bitmap)
             {
                 for (int x = 0; x < img.Width; x++)
@@ -138,6 +143,20 @@ namespace DeColor
         {
             DisableDeColorizeControls();
 
+            // Flatten png images in current directory
+            var currentFiles = Directory.GetFiles(DirectoryPath);
+            foreach(var curFile in currentFiles)
+            {
+                var curFileName = curFile.ToString();
+                DecolorizeImage(curFileName);
+            }
+
+            //If not recursive, return here
+            if(!_isRecursive)
+            {
+                return;
+            }
+
             // Iterate through all subdirectories
             foreach (var directory in Directory.GetDirectories(DirectoryPath))
             {
@@ -146,13 +165,7 @@ namespace DeColor
                 foreach (var file in files)
                 {
                     var filename = file.ToString();
-
-                    if (!filename.EndsWith(".png") || filename.EndsWith(_extendedFileName))
-                    {
-                        continue;
-                    }
-
-                    DecolorizeImage(filename);
+                    
                 }
             }
 
