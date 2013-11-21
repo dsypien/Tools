@@ -37,6 +37,7 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this._colorPanel = new System.Windows.Forms.Panel();
             this._groupBox = new System.Windows.Forms.GroupBox();
+            this._recursiveCheckBox = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this._loaderImage = new System.Windows.Forms.PictureBox();
             this._groupBox.SuspendLayout();
@@ -101,6 +102,7 @@
             // 
             // _groupBox
             // 
+            this._groupBox.Controls.Add(this._recursiveCheckBox);
             this._groupBox.Controls.Add(this._browseButton);
             this._groupBox.Controls.Add(this._colorPanel);
             this._groupBox.Controls.Add(this._directoryLabel);
@@ -112,6 +114,17 @@
             this._groupBox.Size = new System.Drawing.Size(592, 134);
             this._groupBox.TabIndex = 8;
             this._groupBox.TabStop = false;
+            // 
+            // _recursiveCheckBox
+            // 
+            this._recursiveCheckBox.AutoSize = true;
+            this._recursiveCheckBox.Location = new System.Drawing.Point(425, 64);
+            this._recursiveCheckBox.Name = "_recursiveCheckBox";
+            this._recursiveCheckBox.Size = new System.Drawing.Size(69, 17);
+            this._recursiveCheckBox.TabIndex = 8;
+            this._recursiveCheckBox.Text = "recursive";
+            this._recursiveCheckBox.UseVisualStyleBackColor = true;
+            this._recursiveCheckBox.CheckedChanged += new System.EventHandler(this._recursiveCheckBox_CheckedChanged);
             // 
             // button1
             // 
@@ -168,6 +181,7 @@
         private System.Windows.Forms.GroupBox _groupBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox _loaderImage;
+        private System.Windows.Forms.CheckBox _recursiveCheckBox;
     }
 }
 

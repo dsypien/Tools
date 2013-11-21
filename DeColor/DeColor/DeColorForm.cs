@@ -18,6 +18,7 @@ namespace DeColor
         private ObservableCollection<KnownColor> _colors = new ObservableCollection<KnownColor>();
         private string _extendedFileName = "_deColorD.png";
         private Color _selectedColor = Color.White;
+        private bool _isRecursive;
 
         #region Properties
 
@@ -102,7 +103,7 @@ namespace DeColor
             UpdatePanelColor( SelectedColor );
         }
 
-        private void BeginDecolorize()
+        private void DisableDeColorizeControls()
         {
             SetControlVisible(_loaderImage);
 
@@ -111,7 +112,7 @@ namespace DeColor
             SetControlEnabled(_groupBox, false);
         }
 
-        private void EndDecolorize()
+        private void EnableDeColorizeControls()
         {
             SetControlVisible(_loaderImage, false);
 
@@ -135,7 +136,7 @@ namespace DeColor
 
         private void DeColorize()
         {
-            BeginDecolorize();
+            DisableDeColorizeControls();
 
             // Iterate through all subdirectories
             foreach (var directory in Directory.GetDirectories(DirectoryPath))
@@ -155,7 +156,7 @@ namespace DeColor
                 }
             }
 
-            EndDecolorize();
+            EnableDeColorizeControls();
         }
 
         #region Cross-Threaded Calls
@@ -225,5 +226,20 @@ namespace DeColor
         }
 
         #endregion
+
+        private void _recursiveCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(this.InvokeRequired)
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    _isRecursive = _recursiveCheckBox.Checked;
+                });
+            }
+            else
+            {
+                _isRecursive = _recursiveCheckBox.Checked;
+            }
+        }
     }
 }
