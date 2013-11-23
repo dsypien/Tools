@@ -151,9 +151,10 @@ namespace DeColor
                 DecolorizeImage(curFileName);
             }
 
-            //If not recursive, return here
+            //If not recursive, enable controls and return here
             if(!_isRecursive)
             {
+                EnableDeColorizeControls();
                 return;
             }
 
