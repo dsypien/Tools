@@ -166,7 +166,6 @@ namespace DeColor
                 foreach (var file in files)
                 {
                     var filename = file.ToString();
-                    
                 }
             }
 
