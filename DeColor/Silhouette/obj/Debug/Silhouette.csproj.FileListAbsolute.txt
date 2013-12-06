@@ -1,0 +1,5 @@
+C:\Users\david\Documents\GitHub\Tools\DeColor\Silhouette\obj\Debug\Silhouette.csprojResolveAssemblyReference.cache
+C:\Users\david\Documents\GitHub\Tools\DeColor\Silhouette\bin\Debug\Silhouette.dll
+C:\Users\david\Documents\GitHub\Tools\DeColor\Silhouette\bin\Debug\Silhouette.pdb
+C:\Users\david\Documents\GitHub\Tools\DeColor\Silhouette\obj\Debug\Silhouette.dll
+C:\Users\david\Documents\GitHub\Tools\DeColor\Silhouette\obj\Debug\Silhouette.pdb

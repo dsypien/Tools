@@ -71,35 +71,7 @@ namespace DeColor
 
         private void DecolorizeImage(string filename)
         {
-            if (!filename.EndsWith(".png") || filename.EndsWith(_extendedFileName))
-            {
-                return;
-            }
-
-            using (Bitmap img = Image.FromFile(filename) as Bitmap)
-            {
-                for (int x = 0; x < img.Width; x++)
-                {
-                    for (int y = 0; y < img.Height; y++)
-                    {
-                        Color pixelColor = img.GetPixel(x, y);
-
-                        img.SetPixel(x, y, Color.FromArgb(
-                            pixelColor.A,
-                            SelectedColor
-                        ));
-                    }
-                }
-
-                string fileName = filename.Substring(0, filename.Length - 4) + _extendedFileName;
-
-                if (File.Exists(fileName))
-                {
-                    File.Delete(fileName);
-                }
-
-                img.Save(fileName);
-            }
+           
         }
 
         private void _colorComboBox_SelectedIndexChanged(object sender, EventArgs e)
