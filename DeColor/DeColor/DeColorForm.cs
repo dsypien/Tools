@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.IO;
+using Silhouette;
 
 namespace DeColor
 {
@@ -19,6 +20,7 @@ namespace DeColor
         private string _extendedFileName = "_deColorD.png";
         private Color _selectedColor = Color.White;
         private bool _isRecursive;
+        private SilhouetteGenerator _silhouetteGenerator = new SilhouetteGenerator();
 
         #region Properties
 
@@ -120,7 +122,7 @@ namespace DeColor
             foreach(var curFile in currentFiles)
             {
                 var curFileName = curFile.ToString();
-                DecolorizeImage(curFileName);
+                _silhouetteGenerator.Create(curFileName,_extendedFileName, SelectedColor );
             }
 
             //If not recursive, enable controls and return here

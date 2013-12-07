@@ -81,6 +81,12 @@
   <ItemGroup>
     <Content Include="Assets\ajax-loader.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Silhouette\Silhouette.csproj">
+      <Project>{36ee6d3c-eed5-4957-bebb-7259e9196dab}</Project>
+      <Name>Silhouette</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

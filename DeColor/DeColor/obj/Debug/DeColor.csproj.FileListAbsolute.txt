@@ -19,3 +19,5 @@ C:\Users\david\Documents\GitHub\Tools\DeColor\DeColor\obj\Debug\DeColor.csprojRe
 C:\Users\david\Documents\GitHub\Tools\DeColor\DeColor\obj\Debug\DeColor.DeColorForm.resources
 C:\Users\david\Documents\GitHub\Tools\DeColor\DeColor\obj\Debug\DeColor.Properties.Resources.resources
 C:\Users\david\Documents\GitHub\Tools\DeColor\DeColor\obj\Debug\DeColor.csproj.GenerateResource.Cache
+C:\Users\david\Documents\GitHub\Tools\DeColor\DeColor\bin\Debug\Silhouette.dll
+C:\Users\david\Documents\GitHub\Tools\DeColor\DeColor\bin\Debug\Silhouette.pdb

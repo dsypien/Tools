@@ -8,7 +8,7 @@ using System.IO;
 
 namespace Silhouette
 {
-    public sealed class Silhouette
+    public sealed class SilhouetteGenerator
     {
         public void Create(string filename, string fileExtension, Color selectedColor)
         {
